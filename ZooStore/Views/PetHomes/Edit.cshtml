@@ -1,12 +1,12 @@
 ﻿@model ZooStore.ViewModels.PetHomes.EditVM
 
 @{
-    ViewBag.Title = "Edit_V_PetHomes";
+    ViewBag.Title = "Edit Pet Homes";
     Layout = "~/Views/Shared/_Site.cshtml";
 }
 
 <fieldset>
-    <legend>Add New Pet home</legend>
+    <legend>Add New Pet Home</legend>
     <form action="/PetHomes/Edit" method="post">
         @Html.HiddenFor(m => m.Id)
 

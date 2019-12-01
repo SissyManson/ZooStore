@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -52,6 +53,36 @@ namespace ZooStore.Controllers
             model.HereFrom = item.HereFrom;
 
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(EditVM model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            ZooContext context = new ZooContext();
+
+            Pet item = new Pet();
+            item.Id = model.Id;
+            item.Type = model.Type;
+            item.FurType = model.FurType;
+            item.Age = model.Age;
+            item.LifeSpan = model.LifeSpan;
+            item.HereFrom = model.HereFrom;
+
+            if (item.Id <= 0)
+            {
+                context.Pets.Add(item);
+            }
+            else
+            {
+                context.Entry(item).State = EntityState.Modified;
+            }
+
+            context.SaveChanges();
+
+            return RedirectToAction("Index", "Pets");
         }
 
         [HttpGet]

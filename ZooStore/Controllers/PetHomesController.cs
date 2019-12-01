@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -51,6 +52,35 @@ namespace ZooStore.Controllers
             model.Price = item.Price;
 
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(EditVM model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            ZooContext context = new ZooContext();
+
+            PetHome item = new PetHome();
+            item.Id = model.Id;
+            item.Type = model.Type;
+            item.Size = model.Size;
+            item.Material = model.Material;
+            item.Price = model.Price;
+
+            if (item.Id <= 0)
+            {
+                context.PetHomes.Add(item);
+            }
+            else
+            {
+                context.Entry(item).State = EntityState.Modified;
+            }
+
+            context.SaveChanges();
+
+            return RedirectToAction("Index", "PetHomes");
         }
 
         [HttpGet]

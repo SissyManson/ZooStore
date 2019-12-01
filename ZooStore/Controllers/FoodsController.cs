@@ -8,6 +8,7 @@ using ZooStore.Models;
 using ZooStore.ViewModels.Foods;
 
 using ZooStore.ActionFilters;
+using System.Data.Entity;
 
 namespace ZooStore.Controllers
 {
@@ -51,6 +52,34 @@ namespace ZooStore.Controllers
             model.Price = item.Price;
 
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(EditVM model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            ZooContext context = new ZooContext();
+
+            Food item = new Food();
+            item.Id = model.Id;
+            item.Type = model.Type;
+            item.Quantity = model.Quantity;
+            item.Price = model.Price;
+
+            if (item.Id <= 0)
+            {
+                context.Foods.Add(item);
+            }
+            else
+            {
+                context.Entry(item).State = EntityState.Modified;
+            }
+
+            context.SaveChanges();
+
+            return RedirectToAction("Index", "Foods");
         }
 
         [HttpGet]
