@@ -1,0 +1,38 @@
+﻿@model ZooStore.ViewModels.Home.LoginVM
+
+@{
+    ViewBag.Title = "Login_V_Home";
+    Layout = "~/Views/Shared/_Site.cshtml";
+}
+
+<fieldset>
+    <legend>Login</legend>
+
+    <form action="/Home/Login" method="post">
+        <div style="clear:both">
+            <div style="width:100px; display:inline-block">
+                @Html.LabelFor(m => m.Username)
+            </div>
+            <div style="width:100px; display:inline">
+                @Html.TextBoxFor(m => m.Username)
+            </div>
+            <div style="display:inline">
+                @Html.ValidationMessageFor(m => m.Username)
+            </div>
+        </div>
+        <div style="clear:both">
+            <div style="width:100px; display:inline-block">
+                @Html.LabelFor(m => m.Password)
+            </div>
+            <div style="width:100px; display:inline">
+                @Html.PasswordFor(m => m.Password)
+            </div>
+            <div style="display:inline">
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+        </div>
+        <div style="clear:both;">
+            <input type="submit" value="Login" />
+        </div>
+    </form>
+</fieldset>

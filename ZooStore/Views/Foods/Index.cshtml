@@ -1,0 +1,61 @@
+﻿@model ZooStore.ViewModels.Foods.IndexVM
+
+@{
+    ViewBag.Title = "Index_V_Foods";
+    Layout = "~/Views/Shared/_Site.cshtml";
+}
+
+
+
+<h2>Food in our Zoo store</h2>
+
+<a href="/Foods/Edit">Add New</a>
+<table>
+    <tr>
+        <td>Type</td>
+        <td>Quantity</td>
+        <td>Price</td>
+        <td></td>
+        <td></td>
+    </tr>
+    @foreach (var item in Model.Items)
+    {
+        <tr>
+            <td>@item.Type</td>
+            <td>@item.Quantity</td>
+            <td>@item.Price</td>
+            <td>
+                <a href="/Foods/Edit?Id=@item.Id"
+                   onclick="return confirm('Edit item?')">Edit</a>
+            </td>
+            <td>
+                <a href="/Foods/Delete?Id=@item.Id"
+                   onclick="return confirm('Delete item?')">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+
+@for (int i = 0; i < Model.PagesCount; i++)
+{
+    <a style="text-decoration:none; color:blue; margin:5px;"
+       href="/Foods/Index?Page=@(i+1)&ItemsPerPage=@Model.ItemsPerPage">
+        @(i + 1)
+    </a>
+}
+
+<script>
+    function ddlItemsPerPage_Click() {
+
+        let ddlItemsPerPage = document.getElementById("ddlItemsPerPage");
+        let itemsPerPage = ddlItemsPerPage.options[ddlItemsPerPage.selectedIndex].value;
+
+        window.location.href = "/Foods/Index?ItemsPerPage=" + itemsPerPage;
+    }
+</script>
+
+<select id="ddlItemsPerPage" onchange="ddlItemsPerPage_Click()">
+    <option @(Model.ItemsPerPage == 2 ? "selected" : "") value="2">2</option>
+    <option @(Model.ItemsPerPage == 5 ? "selected" : "") value="5">5</option>
+    <option @(Model.ItemsPerPage == 10 ? "selected" : "") value="10">10</option>
+</select>

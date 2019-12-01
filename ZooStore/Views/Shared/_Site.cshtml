@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>
+        <div style="clear:both;">
+            <h1 style="display: inline-block">
+                Our Zoo Store
+            </h1>
+
+        </div>
+        <div style="clear:both;">
+            <ul style="list-style:none;">
+                <li style="float:left; margin:10px;">
+                    <a href="/Home/Index">Home</a>
+                </li>
+                <li style="float:left; margin:10px;">
+                    <a href="/Pets/Index">Pets</a>
+                </li>
+                <li style="float:left; margin:10px;">
+                    <a href="/Foods/Index">Foods</a>
+                </li>
+                <li style="float:left; margin:10px;">
+                    <a href="/PetHomes/Index">Pet Homes</a>
+                </li>
+                @if (Session["loggedUser"] == null)
+                {
+                    <li style="float:left; margin:10px;">
+                        <a href="/Home/Login">Login</a>
+                    </li>
+                }
+                else
+                {
+                    <li style="float:left; margin:10px;">
+                        <a href="/Home/Logout">Logout</a>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div style="clear:both;">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>

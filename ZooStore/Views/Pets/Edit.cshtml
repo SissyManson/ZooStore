@@ -1,0 +1,78 @@
+﻿@model ZooStore.ViewModels.Pets.EditVM
+
+@{
+    ViewBag.Title = "Edit_V_Pets";
+    Layout = "~/Views/Shared/_Site.cshtml";
+}
+
+<fieldset>
+    <legend>New Pet</legend>
+    <form action="/Pets/Edit" method="get">
+        @Html.HiddenFor(m => m.Id)
+
+        <div style="clear:both">
+            <div style="width:100px; display:inline-block">
+                @Html.LabelFor(m => m.Type)
+            </div>
+            <div style="width:100px; display:inline">
+                @Html.TextBoxFor(m => m.Type)
+            </div>
+            <div style="display:inline">
+                @Html.ValidationMessageFor(m => m.Type)
+            </div>
+        </div>
+
+        <div style="clear:both">
+            <div style="width:100px; display:inline-block">
+                @Html.LabelFor(m => m.FurType)
+            </div>
+            <div style="width:100px; display:inline">
+                @Html.TextBoxFor(m => m.FurType)
+            </div>
+            <div style="display:inline">
+                @Html.ValidationMessageFor(m => m.FurType)
+            </div>
+        </div>
+
+        <div style="clear:both">
+            <div style="width:100px; display:inline-block">
+                @Html.LabelFor(m => m.Age)
+            </div>
+            <div style="width:100px; display:inline">
+                @Html.TextBoxFor(m => m.Age)
+            </div>
+            <div style="display:inline">
+                @Html.ValidationMessageFor(m => m.Age)
+            </div>
+        </div>
+
+        <div style="clear:both">
+            <div style="width:100px; display:inline-block">
+                @Html.LabelFor(m => m.LifeSpan)
+            </div>
+            <div style="width:100px; display:inline">
+                @Html.TextBoxFor(m => m.LifeSpan)
+            </div>
+            <div style="display:inline">
+                @Html.ValidationMessageFor(m => m.LifeSpan)
+            </div>
+        </div>
+
+        <div style="clear:both">
+            <div style="width:100px; display:inline-block">
+                @Html.LabelFor(m => m.HereFrom)
+            </div>
+            <div style="width:100px; display:inline">
+                @Html.TextBoxFor(m => m.HereFrom)
+            </div>
+            <div style="display:inline">
+                @Html.ValidationMessageFor(m => m.HereFrom)
+            </div>
+        </div>
+
+        <div style="clear:both">
+            <input type="submit" value="Save" />
+            <a href="/Pets/Index">Cancel</a>
+        </div>
+    </form>
+</fieldset>
