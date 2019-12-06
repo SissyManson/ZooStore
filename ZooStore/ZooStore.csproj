@@ -98,7 +98,7 @@
     <Content Include="css\style.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
-    <None Include="images\loginbg" />
+    <Content Include="images\138-1389891_animals-poultry-sparrow-sparrow-nature-yellow-blur-birds.jpg" />
     <Content Include="Views\PetHomes\Edit.cshtml" />
     <Content Include="Views\PetHomes\Index.cshtml" />
     <Content Include="Web.config" />

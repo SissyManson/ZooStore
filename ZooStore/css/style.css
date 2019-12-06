@@ -29,10 +29,10 @@ img{max-width:100%;}
 /*-- end reset --*/
 /*--main-content-starts-here--*/
 body {
-	font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     text-transform: uppercase;
-	background: url(../images/bannernew.jpg)no-repeat 0px 0px;
-	 background-size: cover;
+    background: url(../images/138-1389891_animals-poultry-sparrow-sparrow-nature-yellow-blur-birds.jpg)no-repeat 0px 0px;
+    background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -42,11 +42,9 @@ body {
 h1,h2,h3,h4{
 	font-family: 'Text Me One', sans-serif;
 }
-#homeh2{
-    align-content:center;
-    color:aquamarine;
-    text-decoration: underline;
-    font-size:48px;
+td {
+   padding:5px;
+   margin:5px;
 }
 
 .main-agileits {
